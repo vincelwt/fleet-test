@@ -100,9 +100,9 @@ export default function EmployeeList() {
         ) : showEmptyState ? (
           <EmptyState
             onAdd={() => setShowForm(true)}
-            title="No employees yet"
+            title="No employees"
             description="You haven't added any employees yet. Start by adding your first employee to manage your team."
-            icon={<IconUsers size={rem(30)} stroke={1.5} color="var(--mantine-color-blue-filled)" />}
+            icon={<IconUsers size={42} stroke={1.5} />}
           />
         ) : showNoResults ? (
           <NoResults message="No matching employees found. Try adjusting your name or role filters." />

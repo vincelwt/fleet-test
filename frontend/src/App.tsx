@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import EmployeeList from './components/EmployeeList'
 import DeviceList from './components/DeviceList'
-import { MantineProvider, createTheme } from '@mantine/core'
-import { AppShell, Burger, Group, NavLink } from '@mantine/core'
-import { IconUsers, IconDevices } from '@tabler/icons-react'
+import { MantineProvider, createTheme, useMantineColorScheme, useComputedColorScheme } from '@mantine/core'
+import { AppShell, Burger, Group, NavLink, ActionIcon } from '@mantine/core'
+import { IconUsers, IconDevices, IconSun, IconMoon } from '@tabler/icons-react'
 import '@mantine/core/styles.css'
 
 const theme = createTheme({
@@ -15,7 +15,7 @@ export default function App() {
   const [showEmployees, setShowEmployees] = useState(true)
 
   return (
-    <MantineProvider theme={theme}>
+    <MantineProvider theme={theme} defaultColorScheme="light">
       <AppShell
         header={{ height: 60 }}
         navbar={{
@@ -26,14 +26,17 @@ export default function App() {
         padding="md"
       >
         <AppShell.Header>
-          <Group h="100%" px="md">
-            <Burger
-              opened={opened}
-              onClick={() => setOpened(!opened)}
-              hiddenFrom="sm"
-              size="sm"
-            />
-            <h3 style={{ margin: 0 }}>Employee & Device Manager</h3>
+          <Group h="100%" px="md" justify="space-between">
+            <Group>
+              <Burger
+                opened={opened}
+                onClick={() => setOpened(!opened)}
+                hiddenFrom="sm"
+                size="sm"
+              />
+              <h3 style={{ margin: 0 }}>Employee & Device Manager</h3>
+            </Group>
+            <ColorSchemeToggle />
           </Group>
         </AppShell.Header>
 
@@ -57,5 +60,25 @@ export default function App() {
         </AppShell.Main>
       </AppShell>
     </MantineProvider>
+  )
+}
+
+function ColorSchemeToggle() {
+  const { setColorScheme, colorScheme } = useMantineColorScheme()
+  const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true })
+
+  return (
+    <ActionIcon
+      onClick={() => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')}
+      variant="default"
+      size="lg"
+      aria-label="Toggle color scheme"
+    >
+      {computedColorScheme === 'light' ? (
+        <IconMoon size="1.2rem" stroke={1.5} />
+      ) : (
+        <IconSun size="1.2rem" stroke={1.5} />
+      )}
+    </ActionIcon>
   )
 }

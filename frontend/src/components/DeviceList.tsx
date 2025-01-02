@@ -118,9 +118,9 @@ export default function DeviceList() {
         ) : showEmptyState ? (
           <EmptyState
             onAdd={() => setShowForm(true)}
-            title="No devices yet"
+            title="No devices"
             description="You haven't added any devices yet. Start by adding your first device to manage your inventory."
-            icon={<IconDeviceLaptop size={rem(20)} stroke={1.5} color="var(--mantine-color-blue-filled)" />}
+            icon={<IconDeviceLaptop size={42} stroke={1.5} />}
           />
         ) : showNoResults ? (
           <NoResults message="No matching devices found. Try adjusting your search criteria." />

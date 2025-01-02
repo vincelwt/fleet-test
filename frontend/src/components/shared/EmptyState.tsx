@@ -1,5 +1,5 @@
 import React from 'react'
-import { Center, Stack, Title, Text, Button, rem } from '@mantine/core'
+import { Center, Stack, Title, Text, Button, rem, ThemeIcon } from '@mantine/core'
 import { IconPlus } from '@tabler/icons-react'
 
 interface EmptyStateProps {
@@ -13,13 +13,15 @@ export default function EmptyState({ onAdd, title, description, icon }: EmptySta
   return (
     <Center p="xl">
       <Stack align="center" gap="md">
-        {icon}
+        <ThemeIcon size={rem(64)} variant='filled' >
+          {icon}
+        </ThemeIcon>
         <Title order={3}>{title}</Title>
         <Text c="dimmed" size="sm" ta="center" maw={400}>
           {description}
         </Text>
         <Button onClick={onAdd} leftSection={<IconPlus size={14} />}>
-          Add First {title.replace('No ', '')}
+          Add {title.replace('No ', '')}
         </Button>
       </Stack>
     </Center>
