@@ -1,0 +1,12 @@
+{
+  "name": "employee-device-manager",
+  "version": "1.0.0",
+  "scripts": {
+    "dev:frontend": "bun --cwd frontend dev",
+    "dev:backend": "bun --cwd backend dev",
+    "dev": "bun run dev:frontend & bun run dev:backend"
+  },
+  "dependencies": {
+    "bun": "^1.1.42"
+  }
+}
