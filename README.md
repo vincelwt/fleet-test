@@ -2,7 +2,7 @@
 
 A modern web application for managing employees and their assigned devices. 
 
-Built with TypeScript, React, Express, and SQLite.
+Built with TypeScript, React, Express and SQLite.
 
 ## Features
 

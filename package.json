@@ -5,8 +5,7 @@
     "dev:frontend": "bun --cwd frontend dev",
     "dev:backend": "bun --cwd backend dev",
     "dev": "concurrently --kill-others --handle-input \"bun run dev:frontend\" \"bun run dev:backend\"",
-    "postinstall": "cd frontend && npm install && cd ../backend && npm install"
-
+    "postinstall": "cd frontend && bun install && cd ../backend && bun install"
   },
   "dependencies": {
     "bun": "^1.1.42",
