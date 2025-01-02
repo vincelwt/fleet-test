@@ -2,7 +2,7 @@
 
 A modern web application for managing employees and their assigned devices. 
 
-Built with TypeScript, React, and Express.
+Built with TypeScript, React, Express, and SQLite.
 
 ## Features
 
@@ -25,14 +25,11 @@ Built with TypeScript, React, and Express.
   - Significantly faster than Node.js
   - Built-in TypeScript support
   - SQLite support out of the box
+  - Supports all modern JavaScript features
 - **Express**: Minimal web framework
 - **SQLite**: Lightweight, file-based database perfect for small to medium applications
 
 ## Getting Started
-
-### Prerequisites
-- Node.js 18+ or Bun
-- Git
 
 ### Installation
 
@@ -44,22 +41,12 @@ cd test-fleet
 
 2. Install dependencies:
 ```bash
-# Install backend dependencies
-cd backend
-bun install
-
-# Install frontend dependencies
-cd ../frontend
-bun install
+npm install
 ```
 
 3. Start the development servers:
 ```bash
-# Start backend (from backend directory)
-bun run dev
-
-# Start frontend (from frontend directory)
-bun run dev
+npm run dev
 ```
 
 4. Open your browser and navigate to `http://localhost:5173`

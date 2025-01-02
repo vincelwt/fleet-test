@@ -21,6 +21,7 @@ import { DEVICE_TYPES } from '../constants'
 import type { Device } from '../types'
 import EmptyState from './shared/EmptyState'
 import NoResults from './shared/NoResults'
+import { api } from '../services/api'
 
 export default function DeviceList() {
   const [devices, setDevices] = useState<Device[]>([])
@@ -34,8 +35,7 @@ export default function DeviceList() {
   async function fetchDevices() {
     try {
       setIsLoading(true)
-      const res = await fetch('http://localhost:3001/api/devices')
-      const data = await res.json()
+      const data = await api.devices.fetch()
       setDevices(data)
     } finally {
       setIsLoading(false)
@@ -47,9 +47,7 @@ export default function DeviceList() {
   }, [])
 
   async function handleDelete(id: number) {
-    await fetch(`http://localhost:3001/api/devices/${id}`, {
-      method: 'DELETE'
-    })
+    await api.devices.delete(id)
     fetchDevices()
   }
 

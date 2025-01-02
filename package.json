@@ -4,9 +4,12 @@
   "scripts": {
     "dev:frontend": "bun --cwd frontend dev",
     "dev:backend": "bun --cwd backend dev",
-    "dev": "bun run dev:frontend & bun run dev:backend"
+    "dev": "concurrently --kill-others --handle-input \"bun run dev:frontend\" \"bun run dev:backend\"",
+    "postinstall": "cd frontend && npm install && cd ../backend && npm install"
+
   },
   "dependencies": {
-    "bun": "^1.1.42"
+    "bun": "^1.1.42",
+    "concurrently": "^8.2.2"
   }
 }

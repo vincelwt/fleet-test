@@ -48,15 +48,29 @@ async function updateDevice(id: number, device: Omit<Device, 'id'>): Promise<Dev
   return res.json()
 }
 
+async function deleteEmployee(id: number): Promise<void> {
+  await fetch(`${API_URL}/employees/${id}`, {
+    method: 'DELETE'
+  })
+}
+
+async function deleteDevice(id: number): Promise<void> {
+  await fetch(`${API_URL}/devices/${id}`, {
+    method: 'DELETE'
+  })
+}
+
 export const api = {
   employees: {
     fetch: fetchEmployees,
     create: createEmployee,
-    update: updateEmployee
+    update: updateEmployee,
+    delete: deleteEmployee
   },
   devices: {
     fetch: fetchDevices,
     create: createDevice,
-    update: updateDevice
+    update: updateDevice,
+    delete: deleteDevice
   }
 } 

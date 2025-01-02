@@ -19,6 +19,7 @@ import { ROLE_TYPES } from '../constants'
 import type { Employee } from '../types'
 import EmptyState from './shared/EmptyState'
 import NoResults from './shared/NoResults'
+import { api } from '../services/api'
 
 export default function EmployeeList() {
   const [employees, setEmployees] = useState<Employee[]>([])
@@ -31,8 +32,7 @@ export default function EmployeeList() {
   async function fetchEmployees() {
     try {
       setIsLoading(true)
-      const res = await fetch('http://localhost:3001/api/employees')
-      const data = await res.json()
+      const data = await api.employees.fetch()
       setEmployees(data)
     } finally {
       setIsLoading(false)
@@ -44,9 +44,7 @@ export default function EmployeeList() {
   }, [])
 
   async function handleDelete(id: number) {
-    await fetch(`http://localhost:3001/api/employees/${id}`, {
-      method: 'DELETE'
-    })
+    await api.employees.delete(id)
     fetchEmployees()
   }
 
